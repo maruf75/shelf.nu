@@ -1,4 +1,4 @@
-import { cloneElement, useState } from "react";
+import { cloneElement, useEffect, useState } from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import {
   Popover,
@@ -83,6 +83,15 @@ export default function DynamicDropdown({
     getAllEntries,
     handleSelectAll,
   } = useModelFilters({ model, ...hookProps });
+
+  useEffect(() => {
+    const par = localStorage.getItem(model.name)
+    console.log('IN...', model.name, par);
+    
+    if(par!==null && selectedItems.includes(par)===false){
+      handleSelectItemChange(par)
+    }
+  }, []);
 
   return (
     <div className="relative w-full text-center">
@@ -196,6 +205,7 @@ export default function DynamicDropdown({
                         withoutValueItem?.id ?? ""
                       )}
                       onChange={(e) => {
+                        localStorage.setItem(model.name, e.currentTarget.value)
                         handleSelectItemChange(e.currentTarget.value);
                       }}
                     />
@@ -236,6 +246,7 @@ export default function DynamicDropdown({
                         className="hidden"
                         checked={checked}
                         onChange={(e) => {
+                          localStorage.setItem(model.name, e.currentTarget.value)
                           handleSelectItemChange(e.currentTarget.value);
                         }}
                       />

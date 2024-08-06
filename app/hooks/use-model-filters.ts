@@ -74,6 +74,10 @@ export function useModelFilters({
        * If item selection mode is none then values are not added in
        * search params instead they are just updated in state only
        * */
+
+      console.log('$$$ ', value);
+      //localStorage.clear()
+      
       if (selectionMode === "none") {
         setSelectedItems((prev) => [...prev, value]);
       } else {
