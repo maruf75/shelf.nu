@@ -75,9 +75,9 @@ export function useModelFilters({
        * search params instead they are just updated in state only
        * */
 
-      console.log('$$$ ', value);
+      console.log("$$$ ", value);
       //localStorage.clear()
-      
+
       if (selectionMode === "none") {
         setSelectedItems((prev) => [...prev, value]);
       } else {

@@ -85,11 +85,11 @@ export default function DynamicDropdown({
   } = useModelFilters({ model, ...hookProps });
 
   useEffect(() => {
-    const par = localStorage.getItem(model.name)
-    console.log('IN...', model.name, par);
-    
-    if(par!==null && selectedItems.includes(par)===false){
-      handleSelectItemChange(par)
+    const par = localStorage.getItem(model.name);
+    console.log("IN...", model.name, par);
+
+    if (par !== null && selectedItems.includes(par) === false) {
+      handleSelectItemChange(par);
     }
   }, []);
 
@@ -205,7 +205,7 @@ export default function DynamicDropdown({
                         withoutValueItem?.id ?? ""
                       )}
                       onChange={(e) => {
-                        localStorage.setItem(model.name, e.currentTarget.value)
+                        localStorage.setItem(model.name, e.currentTarget.value);
                         handleSelectItemChange(e.currentTarget.value);
                       }}
                     />
@@ -246,7 +246,10 @@ export default function DynamicDropdown({
                         className="hidden"
                         checked={checked}
                         onChange={(e) => {
-                          localStorage.setItem(model.name, e.currentTarget.value)
+                          localStorage.setItem(
+                            model.name,
+                            e.currentTarget.value
+                          );
                           handleSelectItemChange(e.currentTarget.value);
                         }}
                       />
